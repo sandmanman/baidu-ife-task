@@ -5,7 +5,7 @@
 
 ### 任务中提到及遇见的问题记录
 
-#### JavaScript 的性能优化：加载和执行
+##### JavaScript 的性能优化：加载和执行
 
 [JavaScript 的性能优化：加载和执行](http://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/index.html)
 
@@ -50,23 +50,23 @@
   ```
 
 
-  #### 数据类型判断
+##### 数据类型判断
 
-  - 数组
+- 数组
 
-    ```javascript
-    // 判断arr是否为一个数组，返回一个bool值
-    function isArray(arr) {
-       return Object.prototype.toString.call(arr) === '[object Array]';
-    }
-    ```
-    ECMAScript5，判断数组类型可以直接使用 <code>Array.isArray()</code>
+  ```javascript
+  // 判断arr是否为一个数组，返回一个bool值
+  function isArray(arr) {
+     return Object.prototype.toString.call(arr) === '[object Array]';
+  }
+  ```
+  ECMAScript5，判断数组类型可以直接使用 <code>Array.isArray()</code>
 
-  - 函数
+- 函数
 
-    ```javascript
-    // 判断fn是否为一个函数，返回bool值
-    function isFn(fn) {
-      return typeof(fn) === 'function';
-    }
-    ```
+  ```javascript
+  // 判断fn是否为一个函数，返回bool值
+  function isFn(fn) {
+    return typeof(fn) === 'function';
+  }
+  ```
