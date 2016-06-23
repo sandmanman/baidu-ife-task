@@ -1,11 +1,11 @@
-# 百度前端技术学院 前端技术学习记录
+# 前端技术学习记录
 
 [Baidu IFE](https://github.com/baidu-ife/ife)
 
 
 ### 任务中提到及遇见的问题记录
 
-##### JavaScript 的性能优化：加载和执行
+##### JavaScript 的性能优化-加载和执行
 
 [JavaScript 的性能优化：加载和执行](http://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/index.html)
 
@@ -58,10 +58,9 @@
   - Undefined 一个没有被赋值的变量会有个默认值 undefined
   - Number 数字类型
   - String 字符串类型
-
 - Object 对象
 
-- 数组
+- 判断数组
 
   ```javascript
   // 判断arr是否为一个数组，返回一个bool值
@@ -71,7 +70,7 @@
   ```
   ECMAScript5，判断数组类型可以直接使用 <code>Array.isArray()</code>
 
-- 函数
+- 判断函数
 
   ```javascript
   // 判断fn是否为一个函数，返回bool值
