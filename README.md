@@ -48,3 +48,25 @@
     });
   });
   ```
+
+
+  #### 数据类型判断
+
+  - 数组
+
+    ```javascript
+    // 判断arr是否为一个数组，返回一个bool值
+    function isArray(arr) {
+       return Object.prototype.toString.call(arr) === '[object Array]';
+    }
+    ```
+    ECMAScript5，判断数组类型可以直接使用 <code>Array.isArray()</code>
+
+  - 函数
+
+    ```javascript
+    // 判断fn是否为一个函数，返回bool值
+    function isFn(fn) {
+      return typeof(fn) === 'function';
+    }
+    ```
