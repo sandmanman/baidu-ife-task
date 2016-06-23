@@ -84,37 +84,56 @@
 
 ##### 了解值类型和引用类型的区别，了解各种对象的读取、遍历方式，并在util.js中实现以下方法：
 
-  **完全不懂什么递归啊**
+**完全不懂什么递归啊**
+
+```javascript
+// 使用递归来实现一个深度克隆，可以复制一个目标对象，返回一个完整拷贝
+// 被复制的对象类型会被限制为数字、字符串、布尔、日期、数组、Object对象。不会包含函数、正则对象等
+function cloneObject(src) {
+  var reslut;
+  if ( typeof(src) === 'object' ) {
+      // 对象为日期对象时也直接赋值
+      if ( Object.prototype.toString.call(src) === '[object Date]' ) {
+          reslut = src;
+      } else {
+        // 判断对象的类型是array还是object
+        reslut = ( Object.prototype.toString.call(src) === '[object Array]' ) ? [] : {};
+        for (var i in src){
+            if (src.hasOwnProperty(i)) { // 排除继承属性
+                if ( typeof src[i] === 'object' ) {
+                    reslut[i] = cloneObject(src[i]); // 递归赋值
+                } else {
+                    reslut[i] = src[i]; //直接赋值
+                }
+            }
+        }
+      }
+  } else {
+    // 原始类型直接赋值
+    reslut = src;
+  }
+  return reslut;
+}
+// 代码来源https://segmentfault.com/a/1190000004205425
+```
+
+-----------------
+
+##### 学习数组、字符串、数字等相关方法
+
+- 数组去重复
+
+  循环遍历对象数据，使用indexOf筛选是否已包含某元素，使用push添加到新的数组。indexOf() IE9下版本不支持，需考虑兼容问题，参考(MDN)[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf]
 
   ```javascript
-  // 使用递归来实现一个深度克隆，可以复制一个目标对象，返回一个完整拷贝
-  // 被复制的对象类型会被限制为数字、字符串、布尔、日期、数组、Object对象。不会包含函数、正则对象等
-  function cloneObject(src) {
-    var reslut;
-    if ( typeof(src) === 'object' ) {
-        // 对象为日期对象时也直接赋值
-        if ( Object.prototype.toString.call(src) === '[object Date]' ) {
-            reslut = src;
-        } else {
-          // 判断对象的类型是array还是object
-          reslut = ( Object.prototype.toString.call(src) === '[object Array]' ) ? [] : {};
-          for (var i in src){
-              if (src.hasOwnProperty(i)) { // 排除继承属性
-                  if ( typeof src[i] === 'object' ) {
-                      reslut[i] = cloneObject(src[i]); // 递归赋值
-                  } else {
-                      reslut[i] = src[i]; //直接赋值
-                  }
-              }
+  // 对数组进行去重操作，并返回去重后的数据
+  function uniqArray(arr) {
+      var reslut = [];
+      for (var i = 0, arrLength = arr.length; i < arrLength; i++) {
+          if ( reslut.indexOf(arr[i]) === -1 ) { // 查找是否已经包含该元素
+              reslut.push(arr[i]); // 添加到新的数组
           }
-        }
-    } else {
-      // 原始类型直接赋值
-      reslut = src;
-    }
-    return reslut;
+      }
+      return reslut;
   }
-  // 代码来源https://segmentfault.com/a/1190000004205425
   ```
-
-  -----------------

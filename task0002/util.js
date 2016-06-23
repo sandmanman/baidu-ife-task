@@ -1,6 +1,6 @@
 /**
  * JavaScript数据类型及语言基础
- * @auther sandman.csser@foxmail.com
+ * @author sandman.csser@foxmail.com
  * @date 2016.06.23
  */
 
@@ -69,3 +69,19 @@ console.log(abObj.b.b1[0]);
 
 console.log(tarObj.a); // 1
 console.log(tarObj.b.b1[0]); // "hello"
+
+
+// 对数组进行去重操作，并返回去重后的数据
+function uniqArray(arr) {
+    var reslut = [];
+    for (var i = 0, arrLength = arr.length; i < arrLength; i++) {
+        if ( reslut.indexOf(arr[i]) === -1 ) { // 查找是否已经包含该元素
+            reslut.push(arr[i]); // 添加到新的数组
+        }
+    }
+    return reslut;
+}
+// 使用示例
+var a = [1, 3, 5, 7, 5, 3];
+var b = uniqArray(a);
+console.log('去重后:'+b); // [1, 3, 5, 7]
