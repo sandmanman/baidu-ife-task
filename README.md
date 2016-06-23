@@ -50,7 +50,16 @@
   ```
 
 
-##### 数据类型判断
+##### 数据类型
+
+- 原始类型：
+  - Boolean 布尔类型
+  - Null Null 类型只有一个值： null
+  - Undefined 一个没有被赋值的变量会有个默认值 undefined
+  - Number 数字类型
+  - String 字符串类型
+
+- Object 对象
 
 - 数组
 
@@ -70,3 +79,42 @@
     return typeof(fn) === 'function';
   }
   ```
+
+----------
+
+##### 了解值类型和引用类型的区别，了解各种对象的读取、遍历方式，并在util.js中实现以下方法：
+
+  **完全不懂什么递归啊**
+
+  ```javascript
+  // 使用递归来实现一个深度克隆，可以复制一个目标对象，返回一个完整拷贝
+  // 被复制的对象类型会被限制为数字、字符串、布尔、日期、数组、Object对象。不会包含函数、正则对象等
+  function cloneObject(src) {
+    var reslut;
+    if ( typeof(src) === 'object' ) {
+        // 对象为日期对象时也直接赋值
+        if ( Object.prototype.toString.call(src) === '[object Date]' ) {
+            reslut = src;
+        } else {
+          // 判断对象的类型是array还是object
+          reslut = ( Object.prototype.toString.call(src) === '[object Array]' ) ? [] : {};
+          for (var i in src){
+              if (src.hasOwnProperty(i)) { // 排除继承属性
+                  if ( typeof src[i] === 'object' ) {
+                      reslut[i] = cloneObject(src[i]); // 递归赋值
+                  } else {
+                      reslut[i] = src[i]; //直接赋值
+                  }
+              }
+          }
+        }
+    } else {
+      // 原始类型直接赋值
+      reslut = src;
+    }
+    return reslut;
+  }
+  // 代码来源https://segmentfault.com/a/1190000004205425
+  ```
+
+  -----------------
