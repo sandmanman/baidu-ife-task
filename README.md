@@ -122,7 +122,7 @@ function cloneObject(src) {
 
 - 数组去重复
 
-  循环遍历对象数据，使用indexOf筛选是否已包含某元素，使用push添加到新的数组。indexOf() IE9下版本不支持，需考虑兼容问题，参考(MDN)[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf]
+  循环遍历对象数据，使用indexOf筛选是否已包含某元素，使用push添加到新的数组。indexOf() IE9下版本不支持，需考虑兼容问题，参考[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
 
   ```javascript
   // 对数组进行去重操作，并返回去重后的数据
