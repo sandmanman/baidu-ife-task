@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task0002</title>
+  </head>
+  <body>
+    <input id="number1" type="text">
+    <input id="number2" type="text">
+    <span id="result"></span>
+    <button id="addbtn" type="button">submit</button>
+
+    <script type="text/javascript">
+        //console.log('Hellow world!');
+        function $(id) {
+          return document.getElementById(id);
+        }
+
+        //add function
+        function add(num1, num2) {
+          return num1 + num2;
+        }
+
+        //result
+        function renderResult(result) {
+          $('result').innerHTML = result;
+        }
+
+        //addEventHandle
+        function addEventHandle() {
+          var num1 = $('number1').value;
+          var num2 = $('number2').value;
+          var result = add(num1, num2);
+          renderResult(result);
+        }
+
+        function initEvent() {
+          $('addbtn').addEventListener('click', addEventHandle);
+        }
+
+        initEvent();
+
+    </script>
+  </body>
+</html>
