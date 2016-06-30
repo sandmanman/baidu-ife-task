@@ -85,3 +85,40 @@ function uniqArray(arr) {
 var a = [1, 3, 5, 7, 5, 3];
 var b = uniqArray(a);
 console.log('去重后:'+b); // [1, 3, 5, 7]
+
+
+
+// 实现一个简单的trim函数，用于去除一个字符串，头部和尾部的空白字符
+// 假定空白字符只有半角空格、Tab
+// 练习通过循环，以及字符串的一些基本方法，分别扫描字符串str头部和尾部是否有连续的空白字符，并且删掉他们，最后返回一个完成去除的字符串
+function simpleTrim(str) {
+    var result = '';
+    // 从字符串首循环查找
+    for (var i = 0, str_l = str.length; i < str_l; i++) {
+        if ( str[i] != ' ' && str[i] != '\t' ) {
+            break;
+        }
+    }
+    // 从字符串尾循环查找
+    for (var j = str.length -1; j >=0; j--) {
+        if ( str[i] != ' ' && str[i] != '\t' ) {
+            break;
+        }
+    }
+    reslut = str.slice(i, j+1);
+    // slice(beginSlice[, endSlice])方法提取字符串中的一部分，并返回这个新的字符串
+    // beginSlice从0开始，endSlice如果为负则从尾及-1开始
+
+    return reslut;
+}
+// 正则实现trim函数
+function trim(str) {
+  var result = '';
+  result = str.replace(/^\s+|\s+$/g, '');
+  // replace() 方法使用一个替换值（replacement）替换掉一个匹配模式（pattern）在原字符串中某些或所有的匹配项，并返回替换后的字符串
+  return result;
+}
+// 使用示例
+var str = '   hi!  ';
+str = trim(str);
+console.log(str); // 'hi!'
