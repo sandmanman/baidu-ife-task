@@ -234,3 +234,29 @@ function cloneObject(src) {
   };
   console.log(getObjectLength(obj)); // 3
   ```
+
+----------------------
+
+##### 正则表达式
+
+```javascript
+// 判断是否为邮箱地址
+function isEmail(emailStr) {
+    var reg = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+    return reg.test(emailStr);
+}
+// 使用示例
+var email = 'sandman.csser@foxmail.com';
+console.log( 'eMail:'+isEmail(email) );
+
+// 判断是否为手机号
+function isMobilePhone(phone) {
+    // 简单判断是11位数字
+    // 严谨点要判断手机号码段如139,138....
+    var reg = /^(0|86)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+    return reg.test(phone);
+}
+// 使用示例
+var phone = '15801844563';
+console.log( 'phone number:'+isMobilePhone(phone) );
+```
