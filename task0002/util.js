@@ -114,11 +114,61 @@ function simpleTrim(str) {
 // 正则实现trim函数
 function trim(str) {
   var result = '';
-  result = str.replace(/^\s+|\s+$/g, '');
+  result = str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ''); // 匹配首尾
+  // ***chrome下'\s' 可以匹配全角空格，但是考虑兼容的话，需要加上’\uFEFF\xA0’，去掉BOM头和全角空格
+  //result = str.replace(/[\s\uFEFF\xA0]/g, ''); // 匹配字符串中的所有空格
   // replace() 方法使用一个替换值（replacement）替换掉一个匹配模式（pattern）在原字符串中某些或所有的匹配项，并返回替换后的字符串
   return result;
 }
 // 使用示例
-var str = '   hi!  ';
+var str = '   hi!   　全角    ';
 str = trim(str);
 console.log(str); // 'hi!'
+
+
+// 实现一个遍历数组的方法，针对数组中每一个元素执行fn函数，并将数组索引和元素作为参数传递
+// 其中fn函数可以接受两个参数：item和index
+function each(arr, fn) {
+    for (var i = 0, arr_length = arr.length; i < arr_length; i++) {
+      fn( arr[i], i ); // arr[i]为item，i为index
+    }
+}
+// 使用示例
+var arr = ['java', 'c', 'php', 'html'];
+function output(item) {
+    console.log(item)
+}
+each(arr, output);  // java, c, php, html
+
+// 使用示例
+// var arr = ['java', 'c', 'php', 'html'];
+// function output(item, index) {
+//     console.log(index + ': ' + item)
+// }
+// each(arr, output);  // 0:java, 1:c, 2:php, 3:html
+
+
+// 获取对象里第一层元素数量，并返回整数
+// hasOwnProperty()判断一个属性是定义在对象本身而不是继承自原型链，我们需要使用从 Object.prototype 继承而来的 hasOwnProperty 方法。
+// hasOwnProperty()方法是 Javascript 中唯一一个处理对象属性而不会往上遍历原型链的。
+// 当判断对象属性存在时，hasOwnProperty 是唯一可以依赖的方法。
+// 这里还要提醒下，当我们使用 for in loop 来遍历对象时，使用 hasOwnProperty 将会很好地避免来自原型对象扩展所带来的困扰。
+function getObjectLength(obj) {
+    var count = 0;
+    for (var i in obj) {
+      if ( obj.hasOwnProperty(i) ) {
+          count ++;
+      }
+    }
+    return count;
+}
+// 使用示例
+var obj = {
+    a: 1,
+    b: 2,
+    c: {
+        c1: 3,
+        c2: 4
+    }
+};
+console.log(getObjectLength(obj)); // 3

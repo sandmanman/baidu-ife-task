@@ -177,3 +177,60 @@ function cloneObject(src) {
   str = trim(str);
   console.log(str); // 'hi!'
   ```
+
+- 遍历数组，对数组中每一个元素执行fn函数
+
+  ```javascript
+  // 实现一个遍历数组的方法，针对数组中每一个元素执行fn函数，并将数组索引和元素作为参数传递
+  // 其中fn函数可以接受两个参数：item和index
+  function each(arr, fn) {
+      for (var i = 0, arr_length = arr.length; i < arr_length; i++) {
+        fn( arr[i], i ); // arr[i]为item，i为index
+      }
+  }
+  // 使用示例
+  var arr = ['java', 'c', 'php', 'html'];
+  function output(item) {
+      console.log(item)
+  }
+  each(arr, output);  // java, c, php, html
+
+  // 使用示例
+  var arr = ['java', 'c', 'php', 'html'];
+  function output(item, index) {
+      console.log(index + ': ' + item)
+  }
+  each(arr, output);  // 0:java, 1:c, 2:php, 3:html
+  ```
+
+- 获取对象里第一层元素数量，并返回整数
+
+  hasOwnProperty()判断一个属性是定义在对象本身而不是继承自原型链，我们需要使用从 Object.prototype 继承而来的 hasOwnProperty 方法。
+
+  hasOwnProperty()方法是 Javascript 中唯一一个处理对象属性而不会往上遍历原型链的。
+
+  当判断对象属性存在时，hasOwnProperty 是唯一可以依赖的方法。
+
+  这里还要提醒下，当我们使用 for in loop 来遍历对象时，使用 hasOwnProperty 将会很好地避免来自原型对象扩展所带来的困扰。
+
+  ```javascript
+  function getObjectLength(obj) {
+      var count = 0;
+      for (var i in obj) {
+        if ( obj.hasOwnProperty(i) ) {
+            count ++;
+        }
+      }
+      return count;
+  }
+  // 使用示例
+  var obj = {
+      a: 1,
+      b: 2,
+      c: {
+          c1: 3,
+          c2: 4
+      }
+  };
+  console.log(getObjectLength(obj)); // 3
+  ```
