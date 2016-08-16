@@ -304,7 +304,7 @@ function getPosition(element) {
 ```javascript
 // 实现一个简单的Query
 function $(selector) {
-    
+
 }
 
 // 可以通过id获取DOM对象，通过#标示，例如
@@ -543,14 +543,14 @@ function getCookie(cookieName) {
 学习Ajax，并尝试自己封装一个Ajax方法。实现如下方法：
 
 ```javascript
-// 
+//
 function ajax(url, options) {
     // your implement
 }
 
 // 使用示例：
 ajax(
-    'http://localhost:8080/server/ajaxtest', 
+    'http://localhost:8080/server/ajaxtest',
     {
         data: {
             name: 'simon',

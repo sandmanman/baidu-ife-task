@@ -10,6 +10,10 @@
     <span id="result"></span>
     <button id="addbtn" type="button">submit</button>
 
+    <p id="addClass" class="add-class">add class</p>
+
+    <p id="removeClass" class="remove-class old-class">remove class</p>
+
 
     <script type="text/javascript" src="util.js"></script>
     <script type="text/javascript">
@@ -42,6 +46,19 @@
 
         initEvent();
 
+        // 添加class
+        addClass( $('addClass'), 'new-class' );
+
+        // 移除class
+        removeClass( $('removeClass'), 'old-class' );
+
+        // 是否为兄弟元素
+        var isss = isSiblingNode( $('addClass'), $('removeClass') );
+        console.log(isss);
+
+        // 获取元素相对于浏览器的位置
+        var ePos = getPosition($('addClass'));
+        console.log(ePos.top);
     </script>
   </body>
 </html>

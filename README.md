@@ -3,7 +3,7 @@
 [Baidu IFE](https://github.com/baidu-ife/ife)
 
 
-### 任务中提到及遇见的问题记录
+## 任务中提到及遇见的问题记录
 
 ##### JavaScript 的性能优化-加载和执行
 
@@ -259,4 +259,65 @@ function isMobilePhone(phone) {
 // 使用示例
 var phone = '15801844563';
 console.log( 'phone number:'+isMobilePhone(phone) );
+```
+
+--------------------
+
+### DOM
+
+##### 添加class，移除class，是否为兄弟元素，获取元素相对于浏览器窗口的位置
+
+```javascript
+// 先判断是否存在class
+function hasClass(element, className) {
+    var classNames = element.className;
+    if (!classNames) {
+        return false;
+    }
+    classNames = classNames.split(/\s+/);
+    for (var i = 0, cl = classNames.length; i < cl; i++) {
+        if (classNames[i] === className) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// 添加class
+function addClass(element, className) {
+    if ( !hasClass(element, className) ) {
+        element.className = element.className ? [element.className, className].join(' '): className;
+    }
+}
+
+// 移除class
+function removeClass(element, className) {
+    if ( className && hasClass(element, className) ) {
+        var classNames = element.className.split(/\s+/); // split() 方法用于把一个字符串分割成字符串数组
+        for (var i = 0, cl = classNames.length; i < cl; i++) {
+            if (classNames[i] === className) {
+                classNames.splice(i, 1); // array.splice(start, deleteCount)
+                break;
+            }
+        }
+    }
+    element.className = classNames.join(' ');
+}
+
+// 是否为兄弟元素
+function isSiblingNode(element, siblingNode) {
+    for (var node = element.parentNode.firstChild; node; node = node.nextSibling) {
+        if (node === siblingNode) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// 获取元素相对于浏览器窗口左上角的位置
+// 注意：不是文档左上角，如果是相对于文档左上角，还需要加上scrollTop、scrollLeft
+function getPosition(element) {
+    var elementPos = element.getBoundingClientRect();
+    return elementPos;
+}
 ```
