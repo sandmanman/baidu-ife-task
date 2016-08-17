@@ -4,6 +4,11 @@
  * @date 2016.06.23
  */
 
+// 获取指定id的元素
+function $(id) {
+    return document.getElementById(id);
+}
+
 // 判断arr是否为一个数组，返回一个bool值
 // Array.isArray() IE8不支持该方法
 // ECMAScript5判断数据可使用Array.isArray()
@@ -255,3 +260,7 @@ function getPosition(element) {
     var elementPos = element.getBoundingClientRect();
     return elementPos;
 }
+
+
+
+// DOM事件
