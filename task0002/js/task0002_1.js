@@ -7,6 +7,8 @@
 
 (function(){
 
+    "use strict";
+    
     // util
     function filterArray(arr) {
         var result = [];
